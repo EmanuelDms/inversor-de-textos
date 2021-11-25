@@ -1,13 +1,18 @@
 let textToInverseElement = document.getElementById('text_to_inverse');
 
 function inverse(str = '') {
-  let strLength = str.length - 1;
-  let strInversed = '';
+  if (str === '') return str;
 
-  for (let i = strLength; i >= 0; i--) {
-    let lastCharacter = str[i];
-    strInversed += lastCharacter;
-  }
+  let splitedStr = str.split(' ');
+  let reversedSplitedStr = splitedStr.map((value, index) => {
+    if (value === ' ') return value;
+
+    let valueSplited = value.split('');
+    let valueInversed = valueSplited.reverse().join('');
+
+    return valueInversed;
+  });
+  let strInversed = reversedSplitedStr.join(' ');
 
   return strInversed;
 }
